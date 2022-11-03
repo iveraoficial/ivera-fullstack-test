@@ -12,7 +12,7 @@
 🔴 A route of **character list**, accepting parameters of filters and pagination;<br>
 🔴 A route of **character details**, taking the character id as a parameter;<br>
 🔴 A **middleware for log requests**, containing request method, url and parameters saved;<br>
-🔴 A route (authenticated only admin users) of **history**, containing all the log requests (No need front-end, only back-end call. Only admin profile)
+🔴 A route (authenticated only admin users) of **history**, containing all the log requests saved on MongoDB (No need front-end, only back-end call. Only admin profile)
 
 ## :computer: Functionalities (Front-end)
 🔴 A page of **character list**, using parameters, filters and pagination created before;<br>
@@ -21,6 +21,7 @@
 ## Technologies and tools you have to use:
 ☑️ Javascript ES6+ <br>
 ☑️ Nodejs <br>
+☑️ MongoDB <br>
 ☑️ Any front-end framework/library (feel free to use [Vuejs](https://vuejs.org/), [Reactjs](https://reactjs.org/), [EJS](https://ejs.co/) or any other 🚀) <br>
 ☑️ Express (for the back-end) <br>
 ☑️ Be free to use any other tools/tecs if you need <br>
