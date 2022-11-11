@@ -1,7 +1,6 @@
 const { marvelApi, buildMarvelApiRoute } = require("../marvel/marvelApi");
 
 class CharacterController {
-  // GET  http://localhost:3333/characters
   async list(request, response) {
     try {
       const { offset, nameStartsWith } = request.query;
@@ -21,8 +20,6 @@ class CharacterController {
 
       const url = buildMarvelApiRoute("/characters", queries);
 
-      console.log(url);
-
       const { data } = await marvelApi.get(url);
 
       return response.json({
@@ -34,7 +31,6 @@ class CharacterController {
     }
   }
 
-  // GET  https://localhost:3333/characters/:id
   async details(request, response) {
     try {
       const { id } = request.params;
