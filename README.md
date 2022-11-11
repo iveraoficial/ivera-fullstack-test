@@ -43,20 +43,6 @@
 
 🔴 A route to create admin users;
 
-Login
-
-```
-http://127.0.0.1:3000/api/v1/login
-
-{
-    "email": "admin@ivera.com",
-    "password": "12345678"
-}
-
-```
-
-Obs: a senha é criptografada no banco de dados.
-
 Cadastrar novo usuario
 
 - Administrador = `"role": "admin"`
@@ -72,6 +58,41 @@ http://127.0.0.1:3000/api/v1/user
     "passwordConfirm": "12345678",
     "role": "user"
 }
+```
+
+---
+
+🔴 A route to login with admin users (Use the login method that you prefer);
+
+Login
+
+```
+http://127.0.0.1:3000/api/v1/login
+
+{
+    "email": "admin@ivera.com",
+    "password": "12345678"
+}
+```
+
+---
+
+🔴 A route of character list, accepting parameters of filters and pagination;
+
+```
+http://127.0.0.1:3000/api/v1/characters
+```
+
+Parametros:
+
+`&nameStartsWith=thor`
+
+---
+
+🔴 A route of **character details**, taking the character id as a parameter;
+
+```
+http://127.0.0.1:3000/api/v1/characters/id
 ```
 
 ---
