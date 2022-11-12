@@ -55,6 +55,20 @@ class CharacterController {
       return res.status(error.status || 400).json(error.message);
     }
   }
+
+  async detailsData(req, res) {
+    try {
+      const { id } = req.params;
+
+      const url = buildMarvelApiRoute(`/characters/${id}`);
+
+      const { data } = await marvelApi.get(url);
+
+      return data;
+    } catch (error) {
+      return console.log(error.message);
+    }
+  }
 }
 
 module.exports = new CharacterController();

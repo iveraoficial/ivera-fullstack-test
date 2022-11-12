@@ -7,14 +7,12 @@ block content
         .character-card
           img.character-img(src=`${char.thumbnail.path}.${char.thumbnail.extension}`)
           h2.character-name= char.name
-          a.character-btn(href="#") Details
+          a.character-btn(href=char.id) Details
 
   .characters-navigation.container
     button.btn-nav 1
     button.btn-nav 2
     button.btn-nav 3
-    button.btn-nav 4
-    button.btn-nav 5
     button.btn-nav &rarr;
 
 

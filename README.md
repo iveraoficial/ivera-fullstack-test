@@ -47,23 +47,17 @@ MARVEL_PRIVATE_KEY=******
 npm run start
 ```
 
-◽ Abrir navegador:
-
-```
-http://127.0.0.1:3000/
-```
+Acessar os endpoints conforme requisitos abaixo.
 
 ---
 
 ## Resolução Backend
 
-### [Postman](https://documenter.getpostman.com/view/21383137/2s8YeprC8R)
-
-Acesse o postman para visualizar melhor a documentação da api.
+### Acesse aqui o [Postman](https://documenter.getpostman.com/view/21383137/2s8YeprC8R) para ver a documentação.
 
 ---
 
-### Testes
+### Functionalities
 
 🔴 A route to create admin users;
 
@@ -147,7 +141,11 @@ Para acessar essa rota é preciso estar logado com administrador.
 
 ## Resolução Frontend
 
+### Functionalities
+
 🔴 A page of **character list**, using parameters, filters and pagination created before;
+
+🔴 A page of **character details**, that shows all info returned from the backend by clicking on a character on the list created before;
 
 Com a aplicação em execução conforme orientado no início, abra http://localhost:3000 no seu navegador para ver a aplicação.
 
@@ -157,6 +155,12 @@ Preview:
 
 <div align="center">
 <img width='600px' src="./public/img/review.png" width="35px"/>
+</div>
+
+<br>
+
+<div align="center">
+<img width='600px' src="./public/img/review-2.png" width="35px"/>
 </div>
 
 ---

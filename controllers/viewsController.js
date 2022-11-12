@@ -10,19 +10,13 @@ exports.getLogin = async (req, res) => {
   });
 };
 
-exports.getCharacterDetails = (req, res) => {
-  res.status(200).render("character", {
-    title: "Character",
-  });
-};
-
 exports.getCharacters = async (req, res) => {
   const characters = await characterController.listData(req, res);
 
   // console.log(characters.data.results);
   // console.log(characters.data.results[0].name);
   // console.log(characters.data.results[3].thumbnail.path);
-  // console.log(characters.data.results.length);
+  console.log(characters.data.results.length);
 
   // console.log(
   //   characters.data.results[3].thumbnail.path.split("/").pop() ===
@@ -32,5 +26,16 @@ exports.getCharacters = async (req, res) => {
   res.status(200).render("characters", {
     title: "Characters",
     characters,
+  });
+};
+
+exports.getCharacterDetails = async (req, res) => {
+  const character = await characterController.detailsData(req, res);
+
+  // console.log(character.data.results[0].id);
+
+  res.status(200).render("characterDetails", {
+    title: "Character",
+    character,
   });
 };
