@@ -7,7 +7,7 @@ const montarQueryStringApi = () => {
     const privateKey = process.env.PRIVATE_KEY;
     const hash = md5(ts+privateKey+apiKey);
 
-    return `ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return `ts=${ts}&apikey=${apiKey}&hash=${hash}`;
 }
 
 export {montarQueryStringApi};

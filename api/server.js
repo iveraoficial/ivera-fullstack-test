@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 
 montarQueryStringApi();
 
-app.use(router)
+app.use("/api", router);
 
 const port = process.env.APP_PORT;
 app.listen(port, () => {console.log(`A aplicacao esta rodando na porta ${port}...`)});
