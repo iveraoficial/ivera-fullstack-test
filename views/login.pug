@@ -1,0 +1,16 @@
+extends home
+
+block content
+  main.main
+    .login
+      .login-content
+        h2.heading-secondary Login to your account
+        form.form-login
+          .form-group
+            label.form-label(for='email') Email address
+            input#email.form-input(type='email', placeholder='you@example.com', required)
+          .form-group
+            label.form-label(for='password') Password
+            input#password.form-input(type='password', placeholder='••••••••', required, minlength='8')
+          .form-group
+            button.btn Login

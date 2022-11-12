@@ -2,9 +2,15 @@
 
 ### Showing the steps to run the application
 
+---
+
+### ​👷‍♂️​ Acessar o Projeto
+
 ◽ Clonar o repositório:
 
-       git clone https://github.com/brseghese/ivera-fullstack-test.git
+```
+git clone https://github.com/brseghese/ivera-fullstack-test.git
+```
 
 ◽ Instalar dependências:
 
@@ -12,7 +18,7 @@
 npm install
 ```
 
-◽ Criar arquivo `config.env` na raiz do projeto e definir suas variáveis:
+◽ Criar arquivo `config.env` na raiz do projeto e definir as variáveis:
 
 ```
 NODE_ENV=development
@@ -25,11 +31,8 @@ JWT_SECRET=******
 JWT_EXPIRES_IN=90d
 JWT_COOKIE_EXPIRES_IN=90
 
-MARVEL_BASE_URL=******
 MARVEL_PUBLIC_KEY=******
 MARVEL_PRIVATE_KEY=******
-MARVEL_TIMESTAMP=******
-MARVEL_HASH=******
 ```
 
 [MongoDb](https://www.mongodb.com/)
@@ -52,9 +55,15 @@ http://127.0.0.1:3000/
 
 ---
 
-## Resolution
+## Resolução Backend
 
-[Postman Documentation](https://documenter.getpostman.com/view/21383137/2s8YeprC8R)
+### [Postman](https://documenter.getpostman.com/view/21383137/2s8YeprC8R)
+
+Acesse o postman para visualizar melhor a documentação da api.
+
+---
+
+### Testes
 
 🔴 A route to create admin users;
 
@@ -75,6 +84,15 @@ http://127.0.0.1:3000/api/v1/user
 }
 ```
 
+Para cadastrar usuário é preciso estar logado como administrador.
+
+Administrador de teste:
+
+- login: `admin@ivera.com`
+- senha: `12345678`
+
+Obs. a senha é salva no banco criptografada.
+
 ---
 
 🔴 A route to login with admin users (Use the login method that you prefer);
@@ -85,10 +103,12 @@ Login
 http://127.0.0.1:3000/api/v1/login
 
 {
-    "email": "admin@ivera.com",
+    "email": "usuario@ivera.com",
     "password": "12345678"
 }
 ```
+
+Para fazer login, tem que estar cadastrado e informar `email` e `senha`.
 
 ---
 
@@ -100,7 +120,8 @@ http://127.0.0.1:3000/api/v1/characters
 
 Parametros:
 
-`&nameStartsWith=thor`
+`&limit=20` : limita a paginação em 20; <br>
+`&offset=20` : pula 20 personagens para a próxima página;
 
 ---
 
@@ -120,11 +141,37 @@ http://127.0.0.1:3000/api/v1/characters/id
 http://127.0.0.1:3000/api/v1/logs
 ```
 
-<br>
+Para acessar essa rota é preciso estar logado com administrador.
 
 ---
 
-<br>
+## Resolução Frontend
+
+🔴 A page of **character list**, using parameters, filters and pagination created before;
+
+Com a aplicação em execução conforme orientado no início, abra http://localhost:3000 no seu navegador para ver a aplicação.
+
+---
+
+Preview:
+
+<div align="center">
+<img width='600px' src="./public/img/review.png" width="35px"/>
+</div>
+
+---
+
+#### 💬 Sinta-se a vontade para entrar em contato
+
+[![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/brunoseghese/) [![Github Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/brseghese) [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:brseghese@gmail.com)
+
+---
+
+> Desenvolvido com ❤️ por **Bruno Seghese**
+
+---
+
+## Tech test to integrate the iVera Team 🏡
 
 ![SoExcited~GIF](https://user-images.githubusercontent.com/25944558/155590591-4061828a-e437-4b15-80cb-f56a30205bca.gif)
 

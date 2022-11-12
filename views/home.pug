@@ -1,14 +1,18 @@
 doctype html
 html
   head 
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/style.css')
-
-    title Marvel
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet")
+      title Marvel
 
   body
-    h1.heading #{users[0].name}
-    p teste
+    include _header
 
-    script(src='/js/index.js')
+    block content
+
+    include _footer
+
+    script(src='/js/bundle.js')

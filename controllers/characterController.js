@@ -1,47 +1,58 @@
 const { marvelApi, buildMarvelApiRoute } = require("../marvel/marvelApi");
 
 class CharacterController {
-  async list(request, response) {
+  async list(req, res) {
     try {
-      const { offset, nameStartsWith } = request.query;
+      const { limit, offset } = req.query;
 
       let queries = {
         limit: 100,
-        offset,
+        offset: 0,
       };
-
-      if (nameStartsWith) {
-        queries = {
-          limit: 100,
-          offset: 0,
-          nameStartsWith,
-        };
-      }
 
       const url = buildMarvelApiRoute("/characters", queries);
 
       const { data } = await marvelApi.get(url);
 
-      return response.json({
+      return res.json({
         characters: data.data.results,
         total: data.data.total,
       });
     } catch (error) {
-      return response.status(error.status || 400).json(error.message);
+      return res.status(error.status || 400).json(error.message);
     }
   }
 
-  async details(request, response) {
+  async listData(req, res) {
     try {
-      const { id } = request.params;
+      const { limit, offset } = req.params;
+
+      let queries = {
+        limit: 20,
+        offset: 0,
+      };
+
+      const url = buildMarvelApiRoute("/characters", queries);
+
+      const { data } = await marvelApi.get(url);
+
+      return data;
+    } catch (error) {
+      return console.log(error.message);
+    }
+  }
+
+  async details(req, res) {
+    try {
+      const { id } = req.params;
 
       const url = buildMarvelApiRoute(`/characters/${id}`);
 
       const { data } = await marvelApi.get(url);
 
-      return response.json(data.data.results);
+      return res.json(data.data.results);
     } catch (error) {
-      return response.status(error.status || 400).json(error.message);
+      return res.status(error.status || 400).json(error.message);
     }
   }
 }
