@@ -1,0 +1,16 @@
+extends home
+
+block content
+  main.main.container
+    .details
+      .character-details
+        - if (`${character.data.results[0].thumbnail.path.split("/").pop()}` !== "image_not_available")
+          img.character-img(src=`${character.data.results[0].thumbnail.path}.${character.data.results[0].thumbnail.extension}`)
+        - else 
+          img.character-img(src="./img/marvel_default.png")
+        .character-details-description
+          h2.character-details-name= `${character.data.results[0].name}`
+          p.character-details-sumary= `${character.data.results[0].description}`
+          a.btn.btn-back(href='/') Back 
+
+
