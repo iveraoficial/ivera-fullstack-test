@@ -1,14 +1,23 @@
 const { marvelApi, buildMarvelApiRoute } = require("../marvel/marvelApi");
 
 class CharacterController {
+  // API
   async list(req, res) {
     try {
-      const { limit, offset } = req.query;
+      const { offset, nameStartsWith } = req.query;
 
       let queries = {
         limit: 100,
-        offset: 0,
+        offset,
       };
+
+      if (nameStartsWith) {
+        queries = {
+          limit: 100,
+          offset: 0,
+          nameStartsWith,
+        };
+      }
 
       const url = buildMarvelApiRoute("/characters", queries);
 
@@ -23,25 +32,7 @@ class CharacterController {
     }
   }
 
-  async listData(req, res) {
-    try {
-      const { limit, offset } = req.params;
-
-      let queries = {
-        limit: 20,
-        offset: 0,
-      };
-
-      const url = buildMarvelApiRoute("/characters", queries);
-
-      const { data } = await marvelApi.get(url);
-
-      return data;
-    } catch (error) {
-      return console.log(error.message);
-    }
-  }
-
+  // API
   async details(req, res) {
     try {
       const { id } = req.params;
@@ -56,6 +47,35 @@ class CharacterController {
     }
   }
 
+  // PUG
+  async listData(req, res) {
+    try {
+      const { offset, nameStartsWith } = req.query;
+
+      let queries = {
+        limit: 100,
+        offset,
+      };
+
+      if (nameStartsWith) {
+        queries = {
+          limit: 100,
+          offset: 0,
+          nameStartsWith,
+        };
+      }
+
+      const url = buildMarvelApiRoute("/characters", queries);
+
+      const { data } = await marvelApi.get(url);
+
+      return data;
+    } catch (error) {
+      return console.log(error.message);
+    }
+  }
+
+  // PUG
   async detailsData(req, res) {
     try {
       const { id } = req.params;

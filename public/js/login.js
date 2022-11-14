@@ -1,26 +1,23 @@
 import axios from "axios";
 
-export const signup = async (name, email, password, passwordConfirm, role) => {
+export const login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
       url: "/api/v1/login",
       data: {
-        name,
         email,
         password,
-        passwordConfirm,
-        role,
       },
     });
 
     if (res.data.status === "success") {
-      console.log("success!");
+      alert("Logged in successfully!");
       window.setTimeout(() => {
-        location.assign("/");
-      }, 1500);
+        location.assign("/login");
+      }, 1000);
     }
   } catch (err) {
-    console.log(err);
+    alert("error", err.response.data.message);
   }
 };

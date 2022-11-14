@@ -24,11 +24,11 @@ app.use(cookieParser());
 
 app.use(logController.createLog);
 
-app.use("/", viewRouter);
-
-app.use("/api/v1", characterRouter);
-app.use("/api/v1", userRouter);
 app.use("/api/v1", logRouter);
+app.use("/api/v1", userRouter);
+app.use("/api/v1", characterRouter);
+
+app.use("/", viewRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

@@ -1,8 +1,4 @@
-## Tech test to integrate the iVera Team 🏡
-
-### Showing the steps to run the application
-
----
+# Tech test to integrate the iVera Team 🏡
 
 ### ​👷‍♂️​ Acessar o Projeto
 
@@ -35,11 +31,7 @@ MARVEL_PUBLIC_KEY=******
 MARVEL_PRIVATE_KEY=******
 ```
 
-[MongoDb](https://www.mongodb.com/)
-
-[JWT](https://jwt.io/libraries)
-
-[Marvel Api](https://developer.marvel.com/documentation/getting_started)
+[MongoDb](https://www.mongodb.com/) | [JWT](https://jwt.io/libraries) | [Marvel Api](https://developer.marvel.com/documentation/getting_started)
 
 ◽ Executar o script:
 
@@ -47,24 +39,15 @@ MARVEL_PRIVATE_KEY=******
 npm run start
 ```
 
-Acessar os endpoints conforme requisitos abaixo.
-
 ---
 
-## Resolução Backend
+## Funcionalidades Backend
 
 ### Acesse aqui o [Postman](https://documenter.getpostman.com/view/21383137/2s8YeprC8R) para ver a documentação.
 
----
-
-### Functionalities
-
 🔴 A route to create admin users;
 
-Cadastrar novo usuario
-
-- Administrador = `"role": "admin"`
-- Usuário: `"role": "user"`
+Cadastrar novo usuario:
 
 ```
 http://127.0.0.1:3000/api/v1/user
@@ -78,11 +61,14 @@ http://127.0.0.1:3000/api/v1/user
 }
 ```
 
+- Administrador = `"role": "admin"`
+- Usuário: `"role": "user"`
+
 Para cadastrar usuário é preciso estar logado como administrador.
 
-Administrador de teste:
+Use o email e a senha abaixo no endpoint de login para logar:
 
-- login: `admin@ivera.com`
+- email: `admin@ivera.com`
 - senha: `12345678`
 
 Obs. a senha é salva no banco criptografada.
@@ -91,7 +77,7 @@ Obs. a senha é salva no banco criptografada.
 
 🔴 A route to login with admin users (Use the login method that you prefer);
 
-Login
+Login:
 
 ```
 http://127.0.0.1:3000/api/v1/login
@@ -101,8 +87,6 @@ http://127.0.0.1:3000/api/v1/login
     "password": "12345678"
 }
 ```
-
-Para fazer login, tem que estar cadastrado e informar `email` e `senha`.
 
 ---
 
@@ -115,7 +99,8 @@ http://127.0.0.1:3000/api/v1/characters
 Parametros:
 
 `&limit=20` : limita a paginação em 20; <br>
-`&offset=20` : pula 20 personagens para a próxima página;
+`&offset=20` : avança 20 personagens para a próxima página; <br>
+`&nameStartsWith` : pesquisa por nome do personagem
 
 ---
 
@@ -124,6 +109,10 @@ Parametros:
 ```
 http://127.0.0.1:3000/api/v1/characters/id
 ```
+
+Parametros:
+
+Substituir o id no final da URL pelo número id do personagem.
 
 ---
 
@@ -135,19 +124,19 @@ http://127.0.0.1:3000/api/v1/characters/id
 http://127.0.0.1:3000/api/v1/logs
 ```
 
-Para acessar essa rota é preciso estar logado com administrador.
+Para acessar essa rota é preciso estar logado como administrador.
 
 ---
 
-## Resolução Frontend
-
-### Functionalities
+## Funcionalidades Frontend
 
 🔴 A page of **character list**, using parameters, filters and pagination created before;
 
 🔴 A page of **character details**, that shows all info returned from the backend by clicking on a character on the list created before;
 
-Com a aplicação em execução conforme orientado no início, abra http://localhost:3000 no seu navegador para ver a aplicação.
+Com a aplicação em execução, abra http://localhost:3000 no seu navegador para ver a aplicação.
+
+🟢 SITE RESPONSIVO
 
 ---
 
@@ -162,12 +151,6 @@ Preview:
 <div align="center">
 <img width='600px' src="./public/img/review-2.png" width="35px"/>
 </div>
-
----
-
-#### 💬 Sinta-se a vontade para entrar em contato
-
-[![Linkedin Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/brunoseghese/) [![Github Badge](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/brseghese) [![Gmail Badge](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:brseghese@gmail.com)
 
 ---
 

@@ -4,8 +4,11 @@ const userController = require("../controllers/userController");
 
 const router = express.Router();
 
-router.use(userController.protect, userController.restrictTo("admin"));
-
-router.get("/logs", logController.getAll);
+router.get(
+  "/logs",
+  userController.protect,
+  userController.restrictTo("admin"),
+  logController.getAll
+);
 
 module.exports = router;

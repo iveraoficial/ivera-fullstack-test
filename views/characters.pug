@@ -5,22 +5,30 @@ block content
     .characters-list
       each char in characters.data.results
         .character-card
-          img.character-img(src=`${char.thumbnail.path}.${char.thumbnail.extension}`)
+          - if (char.thumbnail.path.split("/").pop() !== "image_not_available")
+              img.character-img(src=`${char.thumbnail.path}.${char.thumbnail.extension}`)
+          - else 
+              img.character-img(src="./img/marvel_default.png")
+          
           h2.character-name= char.name
           a.character-btn(href=char.id) Details
 
   .characters-navigation.container
-    button.btn-nav 1
-    button.btn-nav 2
-    button.btn-nav 3
-    button.btn-nav &rarr;
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=100") 1
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=200") 2
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=300") 3
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=400") 4
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=500") 5
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=600") 6
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=700") 7
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=800") 8
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=900") 9
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1000") 10
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1100") 11
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1200") 12
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1300") 13
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1400") 14
+    a.btn-nav(href="http://127.0.0.1:3000/?offset=1500") 15
 
 
-        
-
-
-
-
-      //- span= `${characters.data.results[0].name}`
-      //- img(src= `${characters.data.results[0].thumbnail.path}.jpg`)
 
