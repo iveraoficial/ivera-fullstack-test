@@ -88,6 +88,8 @@ http://127.0.0.1:3000/api/v1/login
 }
 ```
 
+[JSON Web Tokens](https://jwt.io/) usado como método de login.
+
 ---
 
 🔴 A route of character list, accepting parameters of filters and pagination;
@@ -100,19 +102,13 @@ Parametros:
 
 `&limit=20` : limita a paginação em 20; <br>
 `&offset=20` : avança 20 personagens para a próxima página; <br>
-`&nameStartsWith` : pesquisa por nome do personagem
-
----
+`&nameStartsWith` : pesquisa por nome do personagem;
 
 🔴 A route of **character details**, taking the character id as a parameter;
 
 ```
 http://127.0.0.1:3000/api/v1/characters/id
 ```
-
-Parametros:
-
-Substituir o id no final da URL pelo número id do personagem.
 
 ---
 
