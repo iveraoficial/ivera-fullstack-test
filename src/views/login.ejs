@@ -1,0 +1,35 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+<section class="containerLogin">
+    <div class="main-content">
+        <div class="loginForm">
+            <%- include('includes/messages'); %>
+            <div class="loginDiv">
+                <h3 class="loginText">Create Account</h3>
+                <form action="/login/register" method="post">
+                    <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+                    <label for="">Name</label>
+                    <input type="text" name="name">
+                    <label for="">Email</label>
+                    <input type="email" name="email">
+                    <label for="">Password</label>
+                    <input type="password" name="password">
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+            <div class="loginDiv">
+                <h3 class="loginText">Sign In</h3>
+                <form action="/login/login" method="post">
+                <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+                <label for="">Email</label>
+                <input type="email" name="email">
+                <label for="">Password</label>
+                <input type="password" name="password">
+                <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('includes/footer'); %>

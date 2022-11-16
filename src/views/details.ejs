@@ -1,0 +1,37 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+<section class="container">
+    <div class="main-content">
+        <% if(character) { %>
+        <h3 class="title"><%= character.name %></h3>
+        <div class="details">
+            <h4 class="title">Comics</h4>
+            <% character.comics.items.forEach((comic) =>{ %>
+                <p><%= comic.name %></p>
+            <% }) %>
+        </div>
+        <div class="details">
+            <h4 class="title">Series</h4>
+            <% character.series.items.forEach((serie) =>{ %>
+                <p><%= serie.name %></p>
+            <% }) %>
+        </div>
+        <div class="details">
+            <h4 class="title">Stories</h4>
+            <% character.stories.items.forEach((story) =>{ %>
+                <p><%= story.name %></p>
+            <% }) %>
+        </div>
+        <div class="details">
+            <h4 class="title">Events</h4>
+            <% character.events.items.forEach((event) =>{ %>
+                <p><%= event.name %></p>
+            <% }) %>
+        </div>
+        <p class="moreInfo"></a>More info about <%= character.name %> click <a href="<%= character.urls[0].url %>">HERE</a></p>
+        <% } %>
+    </div>
+</section>
+
+<%- include('includes/footer'); %>

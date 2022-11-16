@@ -1,0 +1,25 @@
+<div class="menu">
+    <nav class="menu-content">
+      <h1><a method="get" href="/">Marvel</a></h1>
+      <form action="/search" method="post" class="search">
+        <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+        <input name="name" type="text" placeholder="Character Name">
+        <button type="submit">Search</button>
+      </form>
+      <% if(!user) { %>
+      <form action="/login" method="get">
+        <button>Sign In</button>
+      </form>
+      <% } %>
+      <% if(user) { %>
+        <div class="navButtons">
+          <form action="/login/logout" method="get">
+            <button>Logout</button>
+          </form>
+          <form action="/showlog" method="get">
+            <button>Show Log</button>
+          </form>
+        </div>
+      <% } %>
+    </nav>
+  </div>
