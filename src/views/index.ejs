@@ -1,0 +1,62 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+<section class="container">
+  <h1 class="title">Personagens da Marvel</h1>
+
+  <div class="main-content">
+    <% if(characters.length > 0) { %>
+    <div class="grid">
+      <div class="column">
+      <% characters.forEach((personagem) =>{ %>
+        <p><a href="/<%= personagem.id %>"><%= personagem.name%></a></p>
+      <% }) %>
+    <% } %>
+    <% if(characters2.length > 0) { %>
+      </div>
+      <div class="column">
+        <% characters2.forEach((personagem) =>{ %>
+          <p><a href="/<%= personagem.id %>"><%= personagem.name%></a></p>
+        <% }) %>
+      </div>
+    <% } %>
+    </div>
+
+    <% if(character[0]) { %>
+      <table class="main-table">
+        <tr>
+          <td><a href="/<%= character[0].id %>"><%= character[0].name %></a</td>
+        </tr>
+      </table>
+    <% } %>
+    <% if(character.length == 0 && characters.length == 0) { %>
+    <p>Nenhum personagem encontrado</p>
+    <% } %>
+  </div>
+
+  <% if(characters.length > 0) { %>
+  <form action="/page" method="post" class="pageSelector">
+    <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+    <select name="page" class="pageInput">
+      <option value="0">1</option>
+      <option value="1">2</option>
+      <option value="2">3</option>
+      <option value="3">4</option>
+      <option value="4">5</option>
+      <option value="5">6</option>
+      <option value="6">7</option>
+      <option value="7">8</option>
+      <option value="8">9</option>
+      <option value="9">10</option>
+      <option value="10">11</option>
+      <option value="11">12</option>
+      <option value="12">13</option>
+      <option value="13">14</option>
+      <option value="14">15</option>
+      <option value="15">16</option>
+    </select>
+    <button type="submit">Go</button>
+  </form>
+  <% } %>
+</section>
+<%- include('includes/footer'); %>

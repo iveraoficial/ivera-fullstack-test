@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+:root {
+  --primary-color: rgb(17, 86, 102);
+  --primary-color-darker: rgb(9, 48, 56);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  font-family: 'Open sans', sans-serif;
+  font-size: 2.5rem;
+  line-height: 1.5rem;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 10rem auto;
+  background: rgba(0, 0, 0, 0.777);
+  padding: 2rem;
+  border-radius: 1rem;
+  min-height: 80vh;
+  color: white;
+}
+
+form{
+  display: flex;
+  
+}
+form input {
+  font-size: 2.4rem;
+  height: 4rem;
+  padding: 0 2rem;
+  border-radius: 1rem;
+}
+
+form button {
+  border: none;
+  background: white;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 700;
+  height: 4rem;
+  cursor: pointer;
+  margin: auto 2rem;
+  width: 12rem;
+  border-radius: 1rem;
+}
+
+form button:hover {
+  background: var(--primary-color-darker);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1;
+  background: rgb(0, 0, 0);
+}
+
+.menu-content {
+  max-width: 140rem;
+  margin: 0 auto;
+  color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title{
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+a{
+  text-decoration: none;
+  color: red;
+}
+
+.main-content{
+  max-width: 120rem;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+
+.containerLogin {
+  max-width: 70rem;
+  margin: 10rem auto;
+  background: rgba(0, 0, 0, 0.777);
+  padding: 2rem;
+  border-radius: 1rem;
+  min-height: 80vh;
+  color: white;
+}
+
+.main-table{
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.329);
+  border-radius: 1rem;
+}
+.main-table tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.63);
+}
+.main-table tr td {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  font-weight: 450;
+  min-height: 50rem;
+  min-width: 35rem;
+}
+
+table, tr, td {
+  border: 0.5px solid white;
+  border-collapse: collapse;
+}
+
+.main-table a {
+  color: white;
+}
+
+.grid{
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  justify-content: space-between;
+}
+
+.grid .column{
+  min-width: 58rem;
+  text-align: center;
+  border: 2px solid white;
+}
+
+.main-content a {
+  color: white;
+}
+
+.pageSelector{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.pageInput{
+  width: 5rem;
+}
+
+.loginForm form{
+  display: block;
+}
+
+.loginForm form input{
+  margin-top: 2rem;
+}
+
+.loginDiv{
+  max-width: 40rem;
+  margin: 5rem auto;
+}
+
+.loginForm form input, .loginForm button, .loginForm label{
+  margin-bottom: 2rem;
+}
+
+.errors{
+  color: rgb(95, 1, 1);
+  background: rgba(240, 162, 162, 0.945);
+  text-align: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+.errors p {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.success{
+  color: rgb(18, 80, 2);
+  background: rgba(136, 240, 133, 0.945);
+  text-align: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+.success p {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.details{
+  text-align: center;
+  border: 2px solid white;
+}
+.details h4{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.moreInfo{
+  text-align: right;
+}
+.moreInfo a{
+  color: rgb(88, 88, 231);
+}
+
+.navButtons{
+  display: flex;
+}
