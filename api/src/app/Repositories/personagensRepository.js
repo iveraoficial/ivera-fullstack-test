@@ -8,7 +8,7 @@ const listarPersonagens = (offset, limite, name) => {
     if(name !== null) {
         url += `&nameStartsWith=${name}`
     }
-    // console.log("URL", url)
+
     return axios.get(url);
 }
 
@@ -16,11 +16,9 @@ const pegarPersonagemPorId = (id) => {
     const apiAuth = montarQueryStringApi();
     let url = `/v1/public/characters/${id}?${apiAuth}`;
 
-    console.log("URL", url)
     return axios.get(url);
 }
 
-// let url = `/v1/public/characters/${id}?${apiAuth}
 export {
     listarPersonagens,
     pegarPersonagemPorId

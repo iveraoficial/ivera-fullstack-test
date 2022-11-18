@@ -5,13 +5,16 @@ import {usuarioValidacao} from "../app/Validators/CadastroValidator.js";
 import usuarioController from "../app/Controllers/UsuarioController.js";
 import {logarValidacao} from "../app/Validators/LoginValidator.js";
 import AuthMiddleware from "../app/Middlewares/AuthMiddleware.js";
+import LogMiddleware from "../app/Middlewares/LogMiddleware.js";
 const router = new Router();
 
-router.get("/personagens", PersonagensController.listarPersonagens);
-router.get("/personagens/:id", PersonagensController.visualizarPersonagem);
+//router.use(LogMiddleware);
 
-router.post("/usuario", AuthMiddleware, usuarioValidacao, UsuarioController.salvar)
-router.post("/autenticar", logarValidacao, usuarioController.logar)
+router.get("/personagens", LogMiddleware, PersonagensController.listarPersonagens);
+router.get("/personagens/:id", LogMiddleware, PersonagensController.visualizarPersonagem);
+
+router.post("/usuario", LogMiddleware, AuthMiddleware, usuarioValidacao, UsuarioController.salvar)
+router.post("/autenticar", LogMiddleware, logarValidacao, usuarioController.logar)
 
 
 export default router;
