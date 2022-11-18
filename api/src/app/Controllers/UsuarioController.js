@@ -1,5 +1,6 @@
-import {salvar} from "../Repositories/usuarioRepository.js";
-import bcrypt from "bcrypt";
+import {salvar, pegarUsuarioPorEmail} from "../Repositories/usuarioRepository.js";
+import bcrypt, {compare} from "bcrypt";
+import pkg from 'jsonwebtoken';
 
 
 class UsuarioController {
@@ -13,6 +14,51 @@ class UsuarioController {
         } catch (error) {
             return response.status(409).json({error: error.message});
         }
+    }
+
+    async logar(request, response) {
+        const {email, senha} = request.body;
+
+        const usuario = await pegarUsuarioPorEmail(email);
+
+        if (typeof  usuario === "undefined") {
+            return response.status(401).json({
+                status: "fail",
+                data: {
+                    title: "Usuário não encontrado."
+                }
+            });
+        }
+
+        const senhaValida = await compare(senha, usuario.senha);
+
+        if (!senhaValida) {
+            return response.status(401).json({
+                status: "fail",
+                data: {
+                    title: "Usuário não encontrado."
+                }
+            });
+        }
+
+        usuario.senha = undefined;
+
+        const {sign} = pkg;
+        const token = sign({usuario},
+            process.env.JWT_SECRET, {
+                expiresIn: "1d"
+            }
+        );
+
+
+        return response.json({
+            status: "success",
+            data: {
+                usuario,
+                token
+            }
+        });
+
     }
 }
 
