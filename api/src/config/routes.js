@@ -2,10 +2,16 @@ import {Router} from "express";
 import PersonagensController from "../app/Controllers/PersonagensController.js";
 import UsuarioController from "../app/Controllers/UsuarioController.js";
 import {usuarioValidacao} from "../app/Validators/CadastroValidator.js";
+import usuarioController from "../app/Controllers/UsuarioController.js";
+import {logarValidacao} from "../app/Validators/LoginValidator.js";
+import AuthMiddleware from "../app/Middlewares/AuthMiddleware.js";
 const router = new Router();
 
 router.get("/personagens", PersonagensController.listarPersonagens);
 router.get("/personagens/:id", PersonagensController.visualizarPersonagem);
-router.post("/usuario", usuarioValidacao,UsuarioController.salvar)
+
+router.post("/usuario", AuthMiddleware, usuarioValidacao, UsuarioController.salvar)
+router.post("/autenticar", logarValidacao, usuarioController.logar)
+
 
 export default router;
