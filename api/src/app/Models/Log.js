@@ -1,5 +1,4 @@
 import mongoose from "../../config/mongoose.js";
-import {Schema} from "mongoose";
 
 const LogSchema = new mongoose.Schema({
     metodo: {
