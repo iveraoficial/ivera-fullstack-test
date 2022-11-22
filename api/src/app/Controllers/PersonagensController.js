@@ -13,16 +13,24 @@ class PersonagensController {
 
         let personagens = {};
         personagens.offset = apiPersonagens.offset;
-        personagens.limit = apiPersonagens.limit;
+        personagens.limit = parseInt(limite);
         personagens.total = apiPersonagens.total;
         personagens.count = apiPersonagens.count;
+        personagens.totalPages = Math.ceil(apiPersonagens.total / limite);
+        personagens.currentPage = parseInt(pagina);
         personagens.results = [];
 
         for (let personagem of apiPersonagens.results) {
+
+            let imagem = null;
+            if (!personagem.thumbnail.path.includes("image_not_available")) {
+                imagem = `${personagem.thumbnail.path}.${personagem.thumbnail.extension}`;
+            }
+
             let item = {
                 "id": personagem.id,
                 "name": personagem.name,
-                "thumbnail": `${personagem.thumbnail.path}.${personagem.thumbnail.extension}`
+                "thumbnail": imagem
             }
 
             personagens["results"].push(item);
@@ -50,10 +58,15 @@ class PersonagensController {
         }
         apiPersonagensId = apiPersonagensId.data.data.results[0];
 
+        let imagem = null;
+        if (!apiPersonagensId.thumbnail.path.includes("image_not_available")) {
+            imagem = `${apiPersonagensId.thumbnail.path}.${apiPersonagensId.thumbnail.extension}`;
+        }
+
         let informacaoPersonagem = {
             "nome": apiPersonagensId.name,
             "descricao": apiPersonagensId.description,
-            "thumbnail": `${apiPersonagensId.thumbnail.path}.${apiPersonagensId.thumbnail.extension}`,
+            "thumbnail": imagem,
             "comics": apiPersonagensId.comics
         }
 

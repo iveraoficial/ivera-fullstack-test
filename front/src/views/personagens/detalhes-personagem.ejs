@@ -1,0 +1,20 @@
+<%- contentFor('content')%>
+<div class="container pb-5">
+    <h2 class="text-center pt-3 mb-2 display-4">
+        <a href="/" class="btn btn-secondary float-start"> < Voltar</a>
+        <%=personagem.nome%>
+    </h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <img class="img-thumbnail float-start me-3 img-personagem" src="<%=personagem.thumbnail === null ? "/static/imagens/sem-foto.jpg" : personagem.thumbnail %>" alt="<%=personagem.nome%>" >
+            <p><%= personagem.descricao == "" ? "Nenhuma descrição encontrada!" : personagem.descricao %></p>
+            <h3>Comics</h3>
+            <ul class="list-group">
+                <%for (let comic of personagem.comics.items) {%>
+                <li class="list-group-item"><%=comic.name%></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
