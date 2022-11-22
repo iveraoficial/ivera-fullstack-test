@@ -1,0 +1,30 @@
+body {
+    background-image: url(../imagens/radial_line.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.content {
+    background-size: auto;
+    height: 44.7rem;
+}
+
+.nav-herois {
+    font-size: 3rem;
+    font-family: 'Bangers', cursive;
+}
+
+.card-header {
+    background-color: #c0c0c0;
+}
+
+.topo {
+    background-color: rgb(255, 142, 142);
+}
+
+main {
+    background-color: #f1f1f1;
+}
+
+.img-personagem {
+    max-width: 30rem;
+}
