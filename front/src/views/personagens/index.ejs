@@ -1,0 +1,17 @@
+<%-contentFor("content")%>
+
+<div class="py-2 px-5 row">
+    <% for(let personagem of personagens.results){%>
+    <div class="col-md-3">
+        <div class="card text-bg-light mt-3 me-2">
+            <div class="card-header text-center"><%=personagem.name%></div>
+            <div class="card-body">
+                <img class="card-img img-heroi img-fluid img-thumbnail" src="<%=personagem.thumbnail === null ? "/static/imagens/sem-foto.jpg" : personagem.thumbnail %>">
+                <p class="card-text text-center mt-2">
+                    <a class="btn btn-success btn-sm" href="/detalhe-do-personagem/<%=personagem.id%>">Ver mais...</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
