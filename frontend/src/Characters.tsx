@@ -14,6 +14,7 @@ import {
     ChangeEventHandler,
     useContext,
     useEffect,
+    useMemo,
     useState
 } from "react";
 import { useNavigate } from "react-router-dom";
@@ -26,21 +27,21 @@ import {
 import AppContext from "./AppContext";
 
 export default function Characters(){
+    let filterParamsTimeout: number | null = null;
+    let setFilterParamsTimeout: number | null = null;
     const appContext = useContext(AppContext);
     const [error,setError] = useState<IError | null>(null);
     const [isLoading,setIsLoading] = useState(false);
+    const [isFull,setIsFull] = useState(false);
     const [filterParams,setFilterParams] = useState<IGetCharactersOffsetAndLimitQueryParameters>({
-        nameStartsWith: '',
         offset: '0',
-        limit: '10'
+        limit: '10',
+        nameStartsWith: ''
     });
     const [characters,setCharacters] = useState<ICharacter[]>([]);
     const onSetFilterParamsUpdate = async () => {
-        if(isLoading){
+        if(isLoading || isFull || !appContext){
             return;
-        }
-        if(!appContext){
-            throw new Error('no application context available');
         }
         setError(null);
         setIsLoading(true);
@@ -52,39 +53,64 @@ export default function Characters(){
         }
         if(characters.length >= result.data.total){
             setIsLoading(false);
+            setIsFull(true);
             return;
         }
-        setCharacters([
+        setCharacters(characters => [
             ...characters,
             ...result.data.results
         ]);
         setIsLoading(false);
     };
-    const onScroll = () => {
-        if((window.scrollY / document.body.scrollHeight) >= 0.88){
-            setFilterParams({
-                ...filterParams,
-                offset: filterParams.limit,
-                limit: filterParams.limit + 20,
-            });
+    const scheduleOnSetFilterParamsUpdate = () => {
+        if(isLoading){
+            return;
         }
+        if(filterParamsTimeout !== null){
+            clearTimeout(filterParamsTimeout);
+        }
+        filterParamsTimeout = window.setTimeout(() => {
+            onSetFilterParamsUpdate()
+                .catch(() => {
+                    setError(createIError({
+                        message: 'failed to update character list according to characters filter'
+                    }));
+                });
+        },500);
+    };
+    const onScroll = () => {
+        const {
+            scrollingElement
+        } = document;
+        if(!scrollingElement){
+            return;
+        }
+        const pct = (scrollingElement.scrollTop / (scrollingElement.scrollHeight - scrollingElement.clientHeight));
+        if(pct < 0.9){
+            return;
+        }
+        if(setFilterParamsTimeout !== null) clearTimeout(setFilterParamsTimeout);
+        setFilterParamsTimeout = window.setTimeout(() => setFilterParams(filterParams => {
+            const limit = parseInt(filterParams.limit,10);
+            return {
+                ...filterParams,
+                offset: limit.toString(),
+                limit: (limit + 10).toString()
+            };
+        }),500);
     };
     useEffect(() => {
+        scheduleOnSetFilterParamsUpdate();
         window.addEventListener('scroll',onScroll);
         return () => {
+            if(filterParamsTimeout !== null) clearTimeout(filterParamsTimeout);
+            if(setFilterParamsTimeout !== null) clearTimeout(setFilterParamsTimeout);
             window.removeEventListener('scroll',onScroll);
         };
-    });
-    useEffect(() => {
-        onSetFilterParamsUpdate()
-            .catch(() => {
-                setError(createIError({
-                    message: 'failed to update character list according to characters filter'
-                }));
-            });
-        return () => {
-        };
-    },[filterParams,appContext]);
+    },[]);
+    useMemo(() => {
+        scheduleOnSetFilterParamsUpdate();
+    },[filterParams]);
     const navigate = useNavigate();
     const openCharacterDetails = (c: ICharacter) => {
         navigate(`/characters/${c.id}`);
@@ -133,9 +159,14 @@ export default function Characters(){
                     </CardActions>
                 </Card>
             ))}
-            {isLoading ? <Box display="flex" justifyContent="center" alignItems="center">
-                <CircularProgress style={{marginTop: '1rem'}}/>
-            </Box> : null}
+            <Box display="flex" justifyContent="center" alignItems="center">
+                {isLoading ? <CircularProgress style={{marginTop: '1rem'}}/> : null}
+                {isFull ? (
+                    <>
+                        No more
+                    </>
+                ) : null}
+            </Box>
         </Box>
     );
 }

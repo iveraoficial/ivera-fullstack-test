@@ -92,8 +92,8 @@ export default function Character(){
                     <Typography variant="h5">
                         Comics
                     </Typography>
-                    {character.comics.items.length ? character.comics.items.map(item => (
-                        <Box>
+                    {character.comics.items.length ? character.comics.items.map((item,i) => (
+                        <Box key={i}>
                             <Button key={item.resourceURI} variant="text">
                                 {item.name}
                             </Button>
@@ -102,8 +102,8 @@ export default function Character(){
                     <Typography variant="h5">
                         Events
                     </Typography>
-                    {character.events.items.length ? character.events.items.map(e => (
-                        <Box>
+                    {character.events.items.length ? character.events.items.map((e,i) => (
+                        <Box key={i}>
                             <Button variant="text">
                                 {e.name}
                             </Button>
