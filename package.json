@@ -1,0 +1,42 @@
+{
+  "dependencies": {
+    "@emotion/react": "11.x",
+    "@emotion/styled": "11.x",
+    "@mui/icons-material": "5.x",
+    "@mui/material": "5.x",
+    "@popperjs/core": "2.x",
+    "@reduxjs/toolkit": "1.x",
+    "autobind-decorator": "2.x",
+    "bcrypt": "5.x",
+    "cors": "2.x",
+    "express": "4.x",
+    "luxon": "3.x",
+    "mongodb": "4.x",
+    "node-fetch": "2.x",
+    "react": "18.x",
+    "react-dom": "18.x",
+    "react-redux": "8.x",
+    "react-router-dom": "6.x",
+    "redux": "4.x",
+    "redux-thunk": "2.x"
+  },
+  "devDependencies": {
+    "@babel/core": "7.x",
+    "@types/bcrypt": "5.x",
+    "@types/cors": "2.x",
+    "@types/express": "4.x",
+    "@types/luxon": "3.x",
+    "@types/node": "18.x",
+    "@types/node-fetch": "2.x",
+    "@types/react": "18.x",
+    "@types/react-dom": "18.x",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "2.x",
+    "ts-loader": "9.x",
+    "ts-node": "10.x",
+    "typescript": "4.x",
+    "valio": "0.x",
+    "webpack": "5.x",
+    "webpack-cli": "5.x"
+  }
+}
