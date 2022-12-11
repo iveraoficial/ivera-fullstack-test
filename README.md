@@ -4,6 +4,10 @@
 
 Just make sure you create a config.ts file in backend folder based on config.example.ts file.
 
+### Requirements
+
+- Node.js 18 (LTS)
+
 ### How to run it?
 
 ```
